@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { Swipe, SwipeItem,Lazyload } from 'vant';
 //引入vant定制主题样式
+// import 'vant/lib/index.less'
 import 'vant/lib/divider/style/less'
 Vue.use(Swipe);
 Vue.use(SwipeItem);

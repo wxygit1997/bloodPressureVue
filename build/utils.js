@@ -63,7 +63,15 @@ exports.cssLoaders = function (options) {
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
-    less: generateLoaders('less'),
+    less: generateLoaders('less',{
+      modifyVars: {
+        'hack': `true; @import "${path.join(
+          __dirname,
+          "../src/assets/less/vantChange.less"//这个import 的路径必须是绝对路径
+        )}";`
+      }
+      
+    }),
     sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),

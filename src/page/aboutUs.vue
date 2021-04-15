@@ -71,7 +71,7 @@
 </template>
 
 
-<style scoped>
+<style  scoped>
     .title{
         font-size: 30px;
     }
