@@ -5,8 +5,10 @@
 </template>
 
 <script>
+// import { component } from 'vue/types/umd';
+
 export default {
-  name: 'App'
+  name: 'App',
 }
 </script>
 

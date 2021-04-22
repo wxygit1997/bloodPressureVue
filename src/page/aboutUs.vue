@@ -1,5 +1,11 @@
 <template>
     <div>
+        <van-nav-bar
+        title="关于我们"
+        left-text="返回"
+        left-arrow
+        @click-left="onClickLeft"
+        />
         <div class="group">
             <div class="title">
                 <van-divider content-position="left">团队介绍</van-divider>
@@ -70,7 +76,15 @@
     </div>
 </template>
 
-
+<script>
+export default {
+    methods:{
+        onClickLeft(){
+            this.$router.push({path:'/homeuser'})
+        }
+    }
+}
+</script>
 <style  scoped>
     .title{
         font-size: 30px;
