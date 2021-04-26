@@ -7,6 +7,9 @@ import HomeUser from '@/page/home_user'
 import HomePage from '@/page/homePage'
 import Login from '@/page/login'
 import Test from '@/page/test'
+import UserInformation from '@/page/userInformation'
+import HomeUserLogged from '@/page/homeUserLogged'
+import BloodPressure from '@/page/bloodPressure'
 
 Vue.use(Router)
 
@@ -41,6 +44,21 @@ const router = new Router({
       path: '/test',
       name: 'Test',
       component: Test
+    },
+    {
+      path: '/userinformation',
+      name: 'UserInformation',
+      component: UserInformation
+    },
+    {
+      path: '/homeuserlogged',
+      name: 'HomeUserLogged',
+      component: HomeUserLogged
+    },
+    {
+      path: '/bloodpressure',
+      name: 'BloodPressure',
+      component: BloodPressure
     }
   ]
 })

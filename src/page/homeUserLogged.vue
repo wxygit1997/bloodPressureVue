@@ -24,10 +24,12 @@ export default{
         return{
             active:3,
             unloggeduserCenterList : [
-            { title: "登录", url: "login" },
-            { title: "注册", url: "#" },
-            { title: "医生注册", url: "#" },
-            { title: "关于我们", url: "aboutus" },
+            { title: "已绑定患者", url: "#" },
+            { title: "绑定新患者", url: "#" },
+            { title: "自诊历史", url: "#" },
+            { title: "修改手机号", url: "#" },
+            { title: "修改密码", url: "#" },
+            { title: "关于我们", url: "aboutUs" },
             { title: "清除缓存", url: "#" }
             ],
         }
@@ -39,12 +41,8 @@ export default{
         onClickLeft(){
             alert('返回');
         },
-        toLogin(){
-            this.$router.push({path:'/login'})
-        },
         toUserInformation(){
-            this.$toast('请先登录');
-            // this.$router.push({path:'/userinformation'})
+            this.$router.push({path:'/userinformation'})
         }
     }
 }

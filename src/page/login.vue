@@ -70,7 +70,7 @@ export default {
                 _this.$store.dispatch('cLogin',_this.userToken);
                 // _this.$router.push('/homeuser');
                 _this.$toast.success('登录成功');
-                this.$router.push({path:'/test'})
+                this.$router.push({path:'/homeuserlogged'})
             })
             .catch(error=>{
                 alert('账号或密码错误');
@@ -78,7 +78,7 @@ export default {
             })
         },
         onClickLeft(){
-            this.$router.push({path:'/homeuser'})
+            this.$router.push({path:'/homeuserlogged'})
         }
     }
     

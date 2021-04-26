@@ -7,6 +7,7 @@ import router from '@/router'  //引入router
 // 添加请求拦截器，在请求头中加token
 
 const axiosInit = axios.create({
+    baseURL:'http://117.78.27.3:8080/gout2.0.hw4.stable/',
     timeout:5000
 })
 axiosInit.interceptors.request.use(
@@ -23,11 +24,12 @@ axiosInit.interceptors.request.use(
 axiosInit.interceptors.response.use(
     response => {
         //拦截响应，做统一处理 
-        return Promise.resolve(response);
+        if(response.status==200)
+            return Promise.resolve(response);
     },
     //接口错误状态处理，也就是说无响应时的处理
     error => {
-        console.log(error.response)
+        console.log(error.response.status)
     }
 )
 
