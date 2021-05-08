@@ -64,6 +64,8 @@ export default {
             })
             .then(res=>{
                 console.log(res);
+                _this.MobilePhone=res.data.data.Tel;
+                window.localStorage.setItem('MobilePhone',_this.MobilePhone);
                 // console.log('jwt '+res.data.data.Token);
                 _this.userToken = 'jwt '+res.data.data.Token;
                 // 将用户token保存到vuex中

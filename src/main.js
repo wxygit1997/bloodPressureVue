@@ -13,8 +13,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { Swipe, SwipeItem,Lazyload } from 'vant';
 import { Sidebar, SidebarItem,Cell, CellGroup,NavBar,Tabbar,TabbarItem,Form,Field,Button} from 'vant';
 import {Toast,Icon,RadioGroup, Radio,Popup} from 'vant'
-import {Picker} from 'vant'
+import {Picker,DatetimePicker, Tab, Tabs} from 'vant'
+import _ from 'loadsh'
 
+Vue.prototype._=_
 // import VueResource from 'vue-resource'
 // Vue.use(VueResource);
 
@@ -48,7 +50,10 @@ Vue.use(Lazyload)
 
 Vue.use(BootstrapVue)
 Vue.use(Divider)
-Vue.use(Popup);
+Vue.use(Popup)
+Vue.use(DatetimePicker)
+Vue.use(Tab)
+Vue.use(Tabs)
 // import MintUi from 'mint-ui'
 // import 'mint-ui/lib/style.css'
 

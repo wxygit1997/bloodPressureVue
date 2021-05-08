@@ -9,6 +9,7 @@ const store = new Vuex.Store({
         changeLogin(state,userToken){
             state.Authorization=userToken;
             localStorage.setItem('Authorization',userToken);
+            // localStorage.setItem('MobilePhoe',MobilePhone);
         }
     },
     actions:{

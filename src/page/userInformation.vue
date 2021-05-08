@@ -116,7 +116,7 @@
 export default{
     data(){
         return{
-            tel:"13869851158",
+            tel:window.localStorage.getItem("MobilePhone"),
             DisplayName:"",
             IDCard:"",
             Tel:"",
@@ -186,6 +186,10 @@ export default{
                 this.$toast.success('修改成功');
                 console.log(res.data)
             })
+            .catch(error=>{
+                console.log(error)
+            }
+            )
         },
         onNationConfirm(value){
             this.nationvalue=value;

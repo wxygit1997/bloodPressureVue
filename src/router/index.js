@@ -10,6 +10,8 @@ import Test from '@/page/test'
 import UserInformation from '@/page/userInformation'
 import HomeUserLogged from '@/page/homeUserLogged'
 import BloodPressure from '@/page/bloodPressure'
+import ShowBloodPressure from '@/page/showBloodPressure'
+import DailyRecord from '@/components/dailyRecord'
 
 Vue.use(Router)
 
@@ -59,6 +61,16 @@ const router = new Router({
       path: '/bloodpressure',
       name: 'BloodPressure',
       component: BloodPressure
+    },
+    {
+      path: '/showbloodpressure',
+      name: 'ShowBloodPressure',
+      component: ShowBloodPressure
+    },
+    {
+      path: '/dailyrecord',
+      name: 'DailyRecord',
+      component: DailyRecord
     }
   ]
 })
