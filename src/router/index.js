@@ -12,6 +12,7 @@ import HomeUserLogged from '@/page/homeUserLogged'
 import BloodPressure from '@/page/bloodPressure'
 import ShowBloodPressure from '@/page/showBloodPressure'
 import DailyRecord from '@/components/dailyRecord'
+import ToolsPage from '@/page/toolsPage'
 
 Vue.use(Router)
 
@@ -71,9 +72,18 @@ const router = new Router({
       path: '/dailyrecord',
       name: 'DailyRecord',
       component: DailyRecord
+    },
+    {
+      path: '/toolspage',
+      name: 'ToolsPage',
+      component: ToolsPage
     }
   ]
 })
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 //导航守卫
 router.beforeEach((to,from,next)=>{
   if(to.path==='/login'){

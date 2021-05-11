@@ -60,7 +60,7 @@ export default{
     },
     methods:{
         onClickLeft(){
-            console.log('暂不返回')
+            this.$router.push({path:'/toolspage'})
 
         },
         getTargetObjById(arr,id){

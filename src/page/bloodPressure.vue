@@ -14,7 +14,7 @@
                 v-model="HighPressure"
                 name="高压"
                 label="高压"
-                placeholder="90mmHg~140mmHg"
+                placeholder="90~140 mmHg"
                 validate-trigger="on"
                 @blur="validateHigh"
             />
@@ -22,7 +22,7 @@
                 v-model="LowPressure"
                 name="低压"
                 label="低压"
-                placeholder="60mmHg~90mmHg"
+                placeholder="60~90 mmHg"
                 @blur="validateLow"
             />
             <van-field
@@ -55,8 +55,11 @@
                     placeholder=" " 
                 />
             </van-cell-group>
-            <van-button round color="linear-gradient(to right, #ff6034, #ee0a24)" @click="submitInfo" style="float:right;margin-right:10px;margin-bottom:5px">
-            提交
+            <van-button round color="#FF8000" @click="submitInfo" style="float:right;margin-right:10px;margin-bottom:5px" v-if="showSubmit">
+                提交
+            </van-button>
+            <van-button round color="#FF8000" @click="changeInfo" style="float:right;margin-right:10px;margin-bottom:5px" v-else>
+                修改
             </van-button>
             <div class="clear"></div>
             
@@ -70,6 +73,7 @@
 export default{
     data(){
         return{
+            showSubmit:true,
             arrow_name:'arrow',
             CheckTime:this.timeFormat(),
             showMore:false,
@@ -78,12 +82,13 @@ export default{
             HeartRate:'',
             Weight:'',
             Note:'',
+            ID:'',
             MobilePhone:window.localStorage.getItem("MobilePhone"),
         }
     },
     methods:{
         onClickLeft(){
-            console.log('暂不返回');
+            this.$router.push({path:'/toolspage'})
         },
         submitInfo(){
             this.$http({
@@ -100,10 +105,33 @@ export default{
                 }
             })
             .then(res=>{
-                console.log(res)
+                console.log(res.data.data.id)
+                console.log(res.data.data)
+                // this.ID=res.data.data.id
             })
             .catch(error=>{
                 alert('error');
+            })
+        },
+        changeInfo(){
+            this.$http({
+                method:'post',
+                url:'gout/api/bld/update',
+                data:{
+                    ID:this.ID,
+                    phone:this.MobilePhone,
+                    BloodPressure1:this.HighPressure,
+                    BloodPressure2:this.LowPressure,
+                    HeartRate:this.HeartRate,
+                    Weight:this.Weight,
+                    Other:'',
+                }
+            })
+            .then(res=>{
+                console.log(res)
+            })
+            .catch(error=>{
+                console.log(error)
             })
         },
         timeFormat() { 
@@ -147,7 +175,16 @@ export default{
         }
 
     },
-    
+    created(){
+        // this.CheckTime=this.$route.query.testTime;
+        this.ID=this.$route.query.ID;
+        if(this.ID){
+            this.CheckTime="";
+            this.showSubmit=false;
+        }
+        this.HighPressure=this.$route.query.highPressure;
+        this.LowPressure=this.$route.query.lowPressure;
+    }
 }
 </script>
 

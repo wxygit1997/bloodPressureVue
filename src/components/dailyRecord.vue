@@ -7,10 +7,11 @@
             <div v-for="(item_detail,key_detail) in item" :key="key_detail">
                 <!-- {{item_detail}} -->
                 <historyRecordCard 
-                :testTime="item_detail.CheckTime?item_detail.CheckTime.substring(12,16):null"
+                :testTime="item_detail.CheckTime?item_detail.CheckTime.substring(11,16):null"
                 :highPressure="item_detail.BloodPressure1"
                 :lowPressure="item_detail.BloodPressure2"
                 :pressureLevel="item_detail.BldLevel"
+                :ID="item_detail.ID"
                 /> 
             </div>
             

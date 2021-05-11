@@ -1,17 +1,17 @@
 <template>
     <div>
         <van-nav-bar
-        title="我的"
+        title="工具"
         left-text="返回"
         left-arrow
         @click-left="onClickLeft"
         />
         
-        <div class="top" @click="toUserInformation">
+        <!-- <div class="top" @click="toUserInformation">
             <van-icon class="user_icon" name="manager" size="60" />
-        </div>
+        </div> -->
         <div class="cell-group">
-            <van-cell v-for="item in unloggeduserCenterList" :key="item.title" :title="item.title" is-link :to="item.url">
+            <van-cell v-for="item in toolsList" :key="item.title" :title="item.title" is-link :to="item.url">
             </van-cell>
         </div>
         <FooterNav />
@@ -22,13 +22,10 @@ import FooterNav from "../components/FooterNav.vue";
 export default{ 
     data(){
         return{
-            // active:3,
-            unloggeduserCenterList : [
-            { title: "登录", url: "login" },
-            { title: "注册", url: "#" },
-            { title: "医生注册", url: "#" },
-            { title: "关于我们", url: "aboutus" },
-            { title: "清除缓存", url: "#" }
+            // active:2,
+            toolsList : [
+            { title: "输入血压", url: "bloodpressure" },
+            { title: "查看血压", url: "showbloodpressure" },
             ],
         }
     },
@@ -38,9 +35,6 @@ export default{
     methods:{
         onClickLeft(){
             alert('返回');
-        },
-        toLogin(){
-            this.$router.push({path:'/login'})
         },
         toUserInformation(){
             this.$toast('请先登录');

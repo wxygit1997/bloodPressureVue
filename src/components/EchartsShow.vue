@@ -55,14 +55,13 @@ export default{
                 },
                 dataZoom:[
                     {
-                        type:'slider',
+                        type:'inside',
                         start:10,
                         end:60
                     },
                     {
-                        type:'inside',
-                        start:10,
-                        end:60
+                        type:'slider',
+                        height:20
                     }
                 ],
                 series:[
@@ -87,7 +86,7 @@ export default{
             })
             .then(res=>{
                 console.log(res.data.data)
-                _.forEach(res.data.data,(value, index) => {
+                _.forEachRight(res.data.data,(value, index) => {
                     console.log(value)
                     _this.nData.push({
                         'CheckTime':value.CheckTime?value.CheckTime.substring(5,13):null,

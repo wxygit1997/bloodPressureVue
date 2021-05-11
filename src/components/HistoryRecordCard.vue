@@ -1,24 +1,65 @@
 <template>
-    <div class="card">
-        <div class="time">
-            {{testTime}}
-        </div>
-        <div class="valueDisplay">
-            <span class="title">血压<br/>mmHg</span>
-            <span class="value">{{highPressure}} / {{lowPressure}}</span>
-        </div>
-        <div class="level">
-            {{pressureLevel}}
-        </div>
+    <div>
+        <van-swipe-cell class="swipe-cell">
+            <div class="card">
+                <div class="time">
+                    {{testTime}}
+                </div>
+                <div class="valueDisplay">
+                    <span class="title">血压<br/>mmHg</span>
+                    <span class="value">{{highPressure}} / {{lowPressure}}</span>
+                </div>
+                <div class="level">
+                    {{pressureLevel}}
+                </div>
+            </div>
+            <template #right class="right">
+                <van-button square text="删除" type="danger" class="delete-button" @click="deleteInfo" />
+                <van-button square text="修改" type="primary" class="delete-button" @click="changeInfo" />
+            </template>
+            
+        </van-swipe-cell>
     </div>
 </template>
 <script>
 export default{
+    inject:['reload'],
     props:{
         testTime:String,
         highPressure:"",
         lowPressure:"",
         pressureLevel:"",
+        ID:"",
+    },
+    methods:{
+        deleteInfo(){
+            const _this=this
+            _this.$http({
+                method:'post',
+                url:'gout/api/bld/del',
+                data:{
+                    ID: this.ID,
+                }
+            })
+            .then(res=>{
+                console.log(res.data.data)
+                _this.reload()
+                //刷新页面
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+        },
+        changeInfo(){
+            this.$router.push({
+                path:'/bloodpressure',
+                query:{
+                    ID:this.ID,
+                    highPressure:this.highPressure,
+                    lowPressure:this.lowPressure
+                }
+            });
+        }
     }
 }
 </script>
@@ -37,7 +78,7 @@ export default{
     font-size: 15px;
     color: darkgray;
     position: absolute;
-    left: 5px;
+    left: 10px;
     top: 50%;
     transform: translate(0%, -50%);
 }
@@ -64,5 +105,13 @@ export default{
     top: 50%;
     transform: translate(0%, -50%);
     color: rgb(165, 7, 54);
+}
+.right{
+    position: relative;
+}
+.delete-button{
+    /* position: absolute; */
+    float: right;
+    height: 100%;
 }
 </style>
