@@ -14,7 +14,7 @@
             <van-cell v-for="item in toolsList" :key="item.title" :title="item.title" is-link :to="item.url">
             </van-cell>
         </div>
-        <FooterNav />
+        <FooterNav v-bind:active="active" />
     </div>
 </template>
 <script>
@@ -22,7 +22,7 @@ import FooterNav from "../components/FooterNav.vue";
 export default{ 
     data(){
         return{
-            // active:2,
+            active:2,
             toolsList : [
             { title: "输入血压", url: "bloodpressure" },
             { title: "查看血压", url: "showbloodpressure" },

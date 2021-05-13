@@ -1,6 +1,6 @@
 <template>
         <van-tabbar v-model="active"  @change="onChange" style="position: absolute;
-        bottom: 0px;">
+        bottom: 0px;" active-color="#ee0a24" inactive-color="#000">
             <van-tabbar-item icon="home-o">首页</van-tabbar-item>
             <van-tabbar-item icon="notes-o">病例</van-tabbar-item>
             <van-tabbar-item icon="apps-o">工具</van-tabbar-item>
@@ -10,10 +10,13 @@
 <script>
 export default {
     
-    data(){
-        return{
-            active:3
-        }
+    // data(){
+    //     return{
+    //         active:0
+    //     }
+    // },
+    props:{
+        active:0
     },
     methods:{
         onChange(index){

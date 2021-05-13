@@ -1,7 +1,7 @@
 <template>
     <div>
         <van-nav-bar
-            title="血压"
+            title="编辑血压"
             left-text="返回"
             left-arrow
             @click-left="onClickLeft"
@@ -107,7 +107,6 @@ export default{
             .then(res=>{
                 console.log(res.data.data.id)
                 console.log(res.data.data)
-                // this.ID=res.data.data.id
             })
             .catch(error=>{
                 alert('error');
@@ -192,9 +191,10 @@ export default{
 .editeBloodPressure{
     width: 95%;
     background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     margin: 0  auto;
+    margin-top: 5px;
 }
 .editeBloodPressure p{
     font-family: 'Microsoft YaHei', serif;

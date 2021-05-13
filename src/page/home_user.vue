@@ -14,7 +14,7 @@
             <van-cell v-for="item in unloggeduserCenterList" :key="item.title" :title="item.title" is-link :to="item.url">
             </van-cell>
         </div>
-        <FooterNav />
+        <FooterNav v-bind:active="active" />
     </div>
 </template>
 <script>
@@ -22,7 +22,7 @@ import FooterNav from "../components/FooterNav.vue";
 export default{ 
     data(){
         return{
-            // active:3,
+            active:3,
             unloggeduserCenterList : [
             { title: "登录", url: "login" },
             { title: "注册", url: "#" },
