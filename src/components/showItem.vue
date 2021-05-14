@@ -7,8 +7,10 @@
             <van-icon class="icon" name="like-o" size="25" />
         </div>
         <div class="middle">
-            <span class="title">{{title}}</span>
+            <!-- <span class="title">{{title}}</span> -->
+            {{title}}
         </div>
+        <div class="clear"></div>
         <div class="bottom">
             <span class="content van-multi-ellipsis--l2">{{content}}</span>
             <img src="https://img01.yzcdn.cn/vant/ipad.jpeg" alt="image" class="image">
@@ -20,15 +22,26 @@
 export default{
     data(){
         return{
-            user:'Alex Lyu',
-            time:'2021-5-11',
-            title:'别靠不吃主食减肥了！',
-            content:'今天这篇文章给大家介绍一个简单的动作，这个动作不仅平时有用，对于....',
             imageSrc:''
             }
     },
     props:{
-        
+        user:{
+            type:String,
+            default:''
+        },
+        title: {
+            type:String,
+            default:''
+        },
+        time:{
+            type:String,
+            default:''
+        },
+        content:{
+            type:String,
+            default:''
+        }
     },
 }
 </script>
@@ -41,6 +54,7 @@ export default{
     padding-left: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
+    height: auto;
 }
 .top{
     height: 50px;
@@ -51,6 +65,10 @@ export default{
     height: auto;
     min-height: 30px;
     position: relative;
+    padding-right: 15px;
+    padding-left: 5px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
 }
 .bottom{
     height: 60px;
@@ -74,12 +92,12 @@ export default{
     top: 10px;
     right: 10px;
 }
-.middle .title{
-    position: absolute;
+/* .middle .title{
+    position: relative;
     top: 5px;
     font-size: 16px;
     font-family: "Microsoft YaHei";
-}
+} */
 .bottom .content{
     position: absolute;
     top: 5px;
@@ -96,4 +114,7 @@ export default{
     height: 80%;
     /* border-radius: 4px; */
 }
+/* .clear{
+    clear: both;
+} */
 </style>
