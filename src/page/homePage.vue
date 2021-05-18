@@ -6,12 +6,17 @@
         left-arrow
         @click-left="onClickLeft"
         />
-        <van-search v-model="value" placeholder="请输入搜索关键词" />
+        <van-search v-model="searchValue" show-action placeholder="请输入搜索关键词" @serach="onSearch" >
+            <template #action>
+                <div @click="onSearch">取消</div>
+            </template>
+        </van-search>
         <van-grid>
             <van-grid-item v-for="(item,i) in gridList" 
                 :key="i" 
                 :icon="item.photo" 
                 :text="item.text" 
+                icon-size="30px"
             >
             </van-grid-item>
         </van-grid>
@@ -22,6 +27,8 @@
                         :user="item.author"
                         :time="item.Time"
                         :content="item.text"
+                        :articleID="item.articleID"
+                        @click="goToArticleDetail"
                     />
                 </div>
             </van-list>
@@ -38,7 +45,8 @@ export default{
     data(){
         return{
             active:0,
-            value:'',
+            articleID:'',
+            searchValue:'',
             imageUrl:require("../assets/zhineng.png"),
             gridList:[
                 {
@@ -63,6 +71,7 @@ export default{
             finished:false,
             page:1,
             refreshing:false,
+            searchData:[],
         }
     },
     components:{
@@ -99,7 +108,8 @@ export default{
                             Title:item.Title,
                             Time:_this.getTime(item.publishdate),
                             author:item.author,
-                            text:item.sub
+                            text:item.sub,
+                            articleID:item.GoutCenterID
                         }
                     })
                     this.dataList=this.dataList.concat(appendList);
@@ -121,7 +131,45 @@ export default{
                 this.page=1
                 this.onLoad();
             }
+        },
+        onSearch(){
+            if(this.searchValue=='')
+                this.$toast('输入为空');
+            else{
+                this.$http2({
+                    method:'post',
+                    url:'getAuditoriumList.do',
+                    data:{
+                        DeviceType: 3,
+                        PageCount: 1,
+                        PageRowCount: 50,
+                        Title: this.searchValue
+                    }
+                })
+                .then(res=>{
+                    const _this=this;
+                    if (res.data.data.GetAuditoriumList.length <= 0) {
+                        _this.$toast('未查询到信息');
+                    }
+                    this.dataList=res.data.data.GetAuditoriumList.map(function(item){
+                        return{
+                            Title:item.Title,
+                            Time:_this.getTime(item.publishdate),
+                            author:item.author,
+                            text:item.sub
+                        }
+                    })
+                })
+                .catch(error=>{
+                    console.log(error)
+                }
+            )
         }
+        },
+        goToArticleDetail(){
+            console.log("***")
+        }
+        
     },
     created(){
         const _this=this
@@ -142,7 +190,8 @@ export default{
                         Title:item.Title,
                         Time:_this.getTime(item.publishdate),
                         author:item.author,
-                        text:item.sub
+                        text:item.sub,
+                        articleID:item.GoutCenterID
                     }
                 })
                 console.log(_this.dataList)

@@ -13,6 +13,7 @@ import BloodPressure from '@/page/bloodPressure'
 import ShowBloodPressure from '@/page/showBloodPressure'
 import DailyRecord from '@/components/dailyRecord'
 import ToolsPage from '@/page/toolsPage'
+import ArticleDetail from '@/page/articleDetail'
 
 Vue.use(Router)
 
@@ -77,6 +78,11 @@ const router = new Router({
       path: '/toolspage',
       name: 'ToolsPage',
       component: ToolsPage
+    },
+    {
+      path: '/articledetail',
+      name: 'ArticleDetail',
+      component: ArticleDetail
     }
   ]
 })

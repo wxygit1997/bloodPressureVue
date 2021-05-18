@@ -3,9 +3,17 @@ import store from '@/store/index'  //引入store
 import router from '@/router'  //引入router
 
 
+// axios.defaults.crossDomain=true
+// axios.defaults.withCredentials=true
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 const axiosInit2 = axios.create({
-    baseURL:'http://117.78.27.3:8080/wxServer/',
-    timeout:5000
+    baseURL:'http://117.78.27.3:8080/wxServer',
+    timeout:5000,
+    headers: {
+        'Content-Type': 'application/json',
+        // withCredentials:true,
+        // crossDomain:true,
+    }
 })
 axiosInit2.interceptors.request.use(
     (config) => {
@@ -26,7 +34,7 @@ axiosInit2.interceptors.response.use(
     },
     //接口错误状态处理，也就是说无响应时的处理
     error => {
-        console.log(error.response.status)
+        console.log(error.response)
     }
 )
 

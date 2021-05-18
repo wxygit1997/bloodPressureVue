@@ -41,6 +41,10 @@ export default{
         content:{
             type:String,
             default:''
+        },
+        articleID:{
+            type:Number,
+            default:''
         }
     },
 }
@@ -48,8 +52,6 @@ export default{
 <style scoped>
 .itemCard{
     border-top: 0.5px solid rgb(211, 210, 210);
-    /* border-bottom: 1px solid rgb(160, 159, 159); */
-    /* height: 400px; */
     border-radius: 4px;
     padding-left: 20px;
     padding-top: 5px;
@@ -65,8 +67,9 @@ export default{
     height: auto;
     min-height: 30px;
     position: relative;
+    padding-top: 5px;
     padding-right: 15px;
-    padding-left: 5px;
+    /* padding-left: 5px; */
     font-size: 16px;
     font-family: "Microsoft YaHei";
 }
@@ -92,12 +95,6 @@ export default{
     top: 10px;
     right: 10px;
 }
-/* .middle .title{
-    position: relative;
-    top: 5px;
-    font-size: 16px;
-    font-family: "Microsoft YaHei";
-} */
 .bottom .content{
     position: absolute;
     top: 5px;
@@ -114,7 +111,4 @@ export default{
     height: 80%;
     /* border-radius: 4px; */
 }
-/* .clear{
-    clear: both;
-} */
 </style>
