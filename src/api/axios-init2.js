@@ -11,8 +11,6 @@ const axiosInit2 = axios.create({
     timeout:5000,
     headers: {
         'Content-Type': 'application/json',
-        // withCredentials:true,
-        // crossDomain:true,
     }
 })
 axiosInit2.interceptors.request.use(

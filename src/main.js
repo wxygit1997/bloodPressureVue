@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './config/rem'
+import axios from 'axios'
 import axiosInit from "./api/axios-init"
 import axiosInit2 from "./api/axios-init2"
 import {Divider} from 'vant'
@@ -33,6 +34,7 @@ Vue.use(Icon)
 // window.axios=axiosInit
 Vue.prototype.$http = axiosInit//全局注册，使用方法为:this.$axios
 Vue.prototype.$http2= axiosInit2
+Vue.prototype.axios=axios
 
 Vue.use(Picker)
 Vue.use(Tabbar)
