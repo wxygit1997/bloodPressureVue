@@ -21,16 +21,18 @@
             </van-grid-item>
         </van-grid>
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh" success-text="刷新成功">
-            <van-list v-model="loading" :finished="finished" finished-text="没有更多啦" @load="loadMore" class="publist">
-                <div v-for="(item,index) in dataList" :key="index">
-                    <Item :title="item.Title" 
+            <van-list v-model="loading" :finished="finished" finished-text="没有更多啦" @load="loadMore" class="publist" >
+                <ul>
+                    <li v-for="(item,index) in dataList" :key="index">
+                        <Item :title="item.Title" 
                         :user="item.author"
                         :time="item.Time"
                         :content="item.text"
                         :articleID="item.articleID"
-                        @click="goToArticleDetail"
-                    />
-                </div>
+                        v-on:articleClick="goToArticleDetail"
+                        />
+                    </li>
+                </ul>
             </van-list>
         </van-pull-refresh>
         
@@ -45,7 +47,7 @@ export default{
     data(){
         return{
             active:0,
-            articleID:'',
+            // articleID:'',
             searchValue:'',
             imageUrl:require("../assets/zhineng.png"),
             gridList:[
@@ -109,7 +111,7 @@ export default{
                             Time:_this.getTime(item.publishdate),
                             author:item.author,
                             text:item.sub,
-                            articleID:item.GoutCenterID
+                            articleID:item.GoutCenterID.toString()
                         }
                     })
                     this.dataList=this.dataList.concat(appendList);
@@ -166,8 +168,14 @@ export default{
             )
         }
         },
-        goToArticleDetail(){
-            console.log("***")
+        goToArticleDetail(articleID){
+            console.log(articleID)
+            this.$router.push({
+                path: '/articledetail',
+                query: {
+                    id:articleID
+                }
+            });
         }
         
     },
@@ -191,7 +199,7 @@ export default{
                         Time:_this.getTime(item.publishdate),
                         author:item.author,
                         text:item.sub,
-                        articleID:item.GoutCenterID
+                        articleID:item.GoutCenterID.toString()
                     }
                 })
                 console.log(_this.dataList)

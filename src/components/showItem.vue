@@ -11,7 +11,7 @@
             {{title}}
         </div>
         <div class="clear"></div>
-        <div class="bottom">
+        <div class="bottom" @click="childClick">
             <span class="content van-multi-ellipsis--l2">{{content}}</span>
             <img src="https://img01.yzcdn.cn/vant/ipad.jpeg" alt="image" class="image">
         </div>
@@ -22,8 +22,9 @@
 export default{
     data(){
         return{
-            imageSrc:''
-            }
+            imageSrc:'',
+            id:this.articleID
+        }
     },
     props:{
         user:{
@@ -43,10 +44,16 @@ export default{
             default:''
         },
         articleID:{
-            type:Number,
+            type:String,
             default:''
-        }
+        },
+
     },
+    methods:{
+        childClick(){
+            this.$emit('articleClick',this.id);
+        }
+    }
 }
 </script>
 <style scoped>
