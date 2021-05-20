@@ -10,15 +10,6 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'assets',
     assetsPublicPath: './',
-    // proxyTable: {
-    //   '/api':{
-    //     target:'http://117.78.27.3:8080/wxServer/jfc/news/single',
-    //     changeOrigin:true,
-    //     pathRewrite:{
-    //       '^/api':'/'
-    //     }
-    //   }
-    // },
     proxyTable:{},
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
