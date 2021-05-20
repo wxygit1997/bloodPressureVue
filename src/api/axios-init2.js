@@ -7,7 +7,8 @@ import router from '@/router'  //引入router
 // axios.defaults.withCredentials=true
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 const axiosInit2 = axios.create({
-    baseURL:'http://117.78.27.3:8080/wxServer',
+    // baseURL:'http://117.78.27.3:8080/wxServer',
+    baseURL:'https://www.goutip.cn',
     timeout:5000,
     headers: {
         'Content-Type': 'application/json',
@@ -32,7 +33,10 @@ axiosInit2.interceptors.response.use(
     },
     //接口错误状态处理，也就是说无响应时的处理
     error => {
-        console.log(error.response)
+        // console.log(error.response)
+        console.log('error!')
+        const response = {'data': {'code': -1}}
+        return response
     }
 )
 
