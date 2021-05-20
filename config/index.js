@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'assets',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     // proxyTable: {
     //   '/api':{
     //     target:'http://117.78.27.3:8080/wxServer/jfc/news/single',
