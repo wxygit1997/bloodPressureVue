@@ -87,13 +87,13 @@ export default{
 .top .user{
     position: absolute;
     top: 3px;
-    left: 3px;
+    left: 8px;
     font-size: 15px;
 }
 .top .time{
     position: absolute;
     top: 25px;
-    left: 3px;
+    left: 8px;
     font-size: 13px;
     color: darkgrey;
 }

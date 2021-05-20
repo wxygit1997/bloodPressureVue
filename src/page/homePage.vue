@@ -6,10 +6,10 @@
         left-arrow
         @click-left="onClickLeft"
         />
-        <van-search v-model="searchValue" show-action placeholder="请输入搜索关键词" @serach="onSearch" >
-            <template #action>
-                <div @click="onSearch">取消</div>
-            </template>
+        <van-search v-model="searchValue" show-action placeholder="请输入搜索关键词" @search="onSearch" @cancel="onCancel">
+            <!-- <template #action>
+                <div @click="onSearch">搜索</div>
+            </template> -->
         </van-search>
         <van-grid>
             <van-grid-item v-for="(item,i) in gridList" 
@@ -44,6 +44,7 @@
 import FooterNav from "../components/FooterNav.vue";
 import Item from "../components/showItem.vue";
 export default{ 
+    inject:['reload'], 
     data(){
         return{
             active:0,
@@ -71,7 +72,7 @@ export default{
             dataList:[],
             loading:false,
             finished:false,
-            page:1,
+            page:0,
             refreshing:false,
             searchData:[],
         }
@@ -89,6 +90,7 @@ export default{
             return time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate()+' '+ time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
         },
         loadMore(){
+            console.log("loadmore")
             this.page+=1;
             this.onLoad();
         },
@@ -168,6 +170,10 @@ export default{
             )
         }
         },
+        onCancel(){
+            //刷新
+            this.reload();
+        },
         goToArticleDetail(articleID){
             console.log(articleID)
             this.$router.push({
@@ -179,36 +185,36 @@ export default{
         }
         
     },
-    created(){
-        const _this=this
-        this.$http2({
-                method:'post',
-                url:'getAuditoriumList.do',
-                data:{
-                    DeviceType: 3,
-                    PageCount: 1,
-                    PageRowCount: 10
-                }
-            })
-            .then(res=>{
-                console.log(res.data)
-                // console.log(res.data.data.GetAuditoriumList[0].Title)
-                _this.dataList=res.data.data.GetAuditoriumList.map(function(item){
-                    return{
-                        Title:item.Title,
-                        Time:_this.getTime(item.publishdate),
-                        author:item.author,
-                        text:item.sub,
-                        articleID:item.GoutCenterID.toString()
-                    }
-                })
-                console.log(_this.dataList)
+    // created(){
+    //     const _this=this
+    //     this.$http2({
+    //             method:'post',
+    //             url:'getAuditoriumList.do',
+    //             data:{
+    //                 DeviceType: 3,
+    //                 PageCount: 1,
+    //                 PageRowCount: 10
+    //             }
+    //         })
+    //         .then(res=>{
+    //             console.log(res.data)
+    //             // console.log(res.data.data.GetAuditoriumList[0].Title)
+    //             _this.dataList=res.data.data.GetAuditoriumList.map(function(item){
+    //                 return{
+    //                     Title:item.Title,
+    //                     Time:_this.getTime(item.publishdate),
+    //                     author:item.author,
+    //                     text:item.sub,
+    //                     articleID:item.GoutCenterID.toString()
+    //                 }
+    //             })
+    //             console.log(_this.dataList)
 
-            })
-            .catch(error=>{
-                console.log(error)
-            }
-        )
-    }
+    //         })
+    //         .catch(error=>{
+    //             console.log(error)
+    //         }
+    //     )
+    // }
 }
 </script>
