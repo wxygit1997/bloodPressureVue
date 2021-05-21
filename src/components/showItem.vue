@@ -4,9 +4,10 @@
             <span class="user">{{user}}</span>
             <br/>
             <span class="time">{{time}}</span>
-            <van-icon class="icon" name="like-o" size="25" />
+            <van-icon v-if="islike" class="icon" name="like" size="25" @click="cancelCollect" />
+            <van-icon v-else class="icon" name="like-o" size="25" @click="collectIt" />
         </div>
-        <div class="middle">
+        <div class="middle" @click="mmm">
             <!-- <span class="title">{{title}}</span> -->
             {{title}}
         </div>
@@ -23,7 +24,8 @@ export default{
     data(){
         return{
             imageSrc:'',
-            id:this.articleID
+            id:this.articleID,
+            islike:false
         }
     },
     props:{
@@ -52,6 +54,52 @@ export default{
     methods:{
         childClick(){
             this.$emit('articleClick',this.id);
+        },
+        mmm(){
+            console.log(this.articleID)
+        },
+        collectIt(){
+            // this.islike=true;
+            console.log(this.articleID)
+            let token=localStorage.getItem('Authorization');
+            if(token==='null'||token===''){
+                this.$toast('请先登录');
+            }else{
+                this.$http2({
+                    method:'post',
+                    url:'jfc/collectgoutknowledge/create',
+                    data:{
+                        GoutKnowledgeID: this.articleID,
+                    }
+                })
+                .then(res=>{
+                    console.log(res)
+                    this.islike=!this.islike;
+                    this.$toast('收藏成功');
+                })
+                .catch(error=>{
+                    console.log(error)
+                }
+            )
+            }
+            
+        },
+        cancelCollect(){
+            this.$http2({
+                method:'post',
+                url:'jfc/collectgoutknowledge/remove',
+                data:{
+                    GoutKnowledgeID: this.articleID,
+                }
+            })
+            .then(res=>{
+                console.log(res)
+                this.islike=!this.islike;
+                this.$toast('取消收藏成功');
+            })
+            .catch(error=>{
+                console.log(error)
+            })
         }
     }
 }

@@ -7,8 +7,9 @@ import router from '@/router'  //引入router
 // axios.defaults.withCredentials=true
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 const axiosInit2 = axios.create({
-    // baseURL:'http://117.78.27.3:8080/wxServer',
-    baseURL:'https://www.goutip.cn',
+    baseURL:'http://117.78.27.3:8080/wxServer',
+    // baseURL:'https://www.goutip.cn',
+    // baseURL:'http://192.168.3.37:8080/',
     timeout:5000,
     headers: {
         'Content-Type': 'application/json',

@@ -29,7 +29,6 @@
                         :time="item.Time"
                         :content="item.text"
                         :articleID="item.articleID"
-                        v-on:articleClick="goToArticleDetail"
                         />
                     </li>
                 </ul>
@@ -182,7 +181,8 @@ export default{
                     id:articleID
                 }
             });
-        }
+        },
+        
         
     },
     // created(){
