@@ -22,7 +22,7 @@ export default {
         onChange(index){
             const routerArray=[
                 "/",
-                "/homeuser",
+                "/recordpage",
                 "/toolspage",
                 "/homeuser"
             ];

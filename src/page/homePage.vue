@@ -1,10 +1,7 @@
 <template>
     <div>
        <van-nav-bar
-        title="工具"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
+        title="首页"
         />
         <van-search v-model="searchValue" show-action placeholder="请输入搜索关键词" @search="onSearch" @cancel="onCancel">
             <!-- <template #action>
@@ -81,9 +78,6 @@ export default{
         Item
     },
     methods:{
-        onClickLeft(){
-            alert('返回');
-        },
         getTime(origiTime){
             var time=new Date(origiTime);
             return time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate()+' '+ time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();

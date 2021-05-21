@@ -1,11 +1,6 @@
 <template>
     <div>
-        <van-nav-bar
-        title="工具"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-        />
+        <van-nav-bar title="工具" />
         
         <!-- <div class="top" @click="toUserInformation">
             <van-icon class="user_icon" name="manager" size="60" />
@@ -33,9 +28,6 @@ export default{
         FooterNav
     },
     methods:{
-        onClickLeft(){
-            alert('返回');
-        },
         toUserInformation(){
             this.$toast('请先登录');
             // this.$router.push({path:'/userinformation'})

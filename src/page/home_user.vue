@@ -2,9 +2,6 @@
     <div>
         <van-nav-bar
         title="我的"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
         />
         
         <div class="top" @click="toUserInformation">
@@ -13,6 +10,7 @@
         <div class="cell-group">
             <van-cell v-for="item in unloggeduserCenterList" :key="item.title" :title="item.title" is-link :to="item.url">
             </van-cell>
+            <van-cell title="注销" @click="clearStorage"></van-cell>
         </div>
         <FooterNav v-bind:active="active" />
     </div>
@@ -28,7 +26,6 @@ export default{
             { title: "注册", url: "#" },
             { title: "医生注册", url: "#" },
             { title: "关于我们", url: "aboutus" },
-            { title: "清除缓存", url: "#" }
             ],
         }
     },
@@ -36,15 +33,16 @@ export default{
         FooterNav
     },
     methods:{
-        onClickLeft(){
-            alert('返回');
-        },
         toLogin(){
             this.$router.push({path:'/login'})
         },
         toUserInformation(){
             this.$toast('请先登录');
             // this.$router.push({path:'/userinformation'})
+        },
+        clearStorage(){
+            localStorage.clear();
+            this.$toast("注销成功");
         }
     }
 }

@@ -6,7 +6,8 @@
             left-arrow
             @click-left="onClickLeft"
         />
-        <div class="showRecentBlood">
+        <div  v-if="islogged">
+            <div class="showRecentBlood">
             <van-cell center title="收缩压" 
             :value="BloodPressure1" 
             label="毫米汞柱" />
@@ -23,19 +24,22 @@
         
         <div class="historyRecord">
             <van-tabs v-model="activeName">
-            <van-tab title="历史记录" name="a">
-                <div>
-                    <historyRecord/>
-                </div>
-            </van-tab>
-            <van-tab title="趋势" name="b">
-                <echart />
-                <!-- <div id="myCharts" ref="myCharts" style="width: 200px;height:200px;"></div> -->
-            </van-tab>
+                <van-tab title="历史记录" name="a">
+                    <div>
+                        <historyRecord/>
+                    </div>
+                </van-tab>
+                <van-tab title="趋势" name="b">
+                    <echart />
+                    <!-- <div id="myCharts" ref="myCharts" style="width: 200px;height:200px;"></div> -->
+                </van-tab>
                 
             </van-tabs>
         </div>
+        </div>
+        
     </div>
+    
 </template>
 
 <script>
@@ -52,6 +56,7 @@ export default{
             BloodPressure2:'',
             HeartRate:'',
             DataList:[],
+            islogged:localStorage.getItem('Authorization')?true:false
         }
     },
     components:{
@@ -118,7 +123,9 @@ export default{
         )
     },
     mounted(){
-        
+        if(!this.islogged){
+            this.$toast.fail("请先登录");
+        }
     }
 }
 </script>
