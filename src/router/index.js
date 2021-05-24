@@ -22,6 +22,11 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     {
+      path: '/',
+      name: 'HomePage',
+      component: HomePage
+    },
+    {
       path: '/home',
       name: 'Home',
       component: Home
@@ -35,11 +40,6 @@ const router = new Router({
       path: '/homeuser',
       name: 'HomeUser',
       component: HomeUser
-    },
-    {
-      path: '/',
-      name: 'HomePage',
-      component: HomePage
     },
     {
       path: '/login',

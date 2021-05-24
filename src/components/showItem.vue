@@ -7,11 +7,9 @@
             <van-icon v-if="islike" class="icon" name="like" size="25" @click="cancelCollect" />
             <van-icon v-else class="icon" name="like-o" size="25" @click="collectIt" />
         </div>
-        <div class="middle" @click="mmm">
-            <!-- <span class="title">{{title}}</span> -->
+        <div class="middle" @click="childClick">
             {{title}}
         </div>
-        <div class="clear"></div>
         <div class="bottom" @click="childClick">
             <span class="content van-multi-ellipsis--l2">{{content}}</span>
             <img src="https://img01.yzcdn.cn/vant/ipad.jpeg" alt="image" class="image">
@@ -54,9 +52,6 @@ export default{
     methods:{
         childClick(){
             this.$emit('articleClick',this.id);
-        },
-        mmm(){
-            console.log(this.articleID)
         },
         collectIt(){
             // this.islike=true;

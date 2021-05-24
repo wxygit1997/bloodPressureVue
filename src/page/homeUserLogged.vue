@@ -1,20 +1,15 @@
 <template>
     <div>
-        <van-nav-bar
-        title="我的"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-        />
-        
+        <van-nav-bar title="我的" />  
         <div class="top" @click="toUserInformation">
             <van-icon class="user_icon" name="manager" size="60" />
         </div>
         <div class="cell-group">
             <van-cell v-for="item in unloggeduserCenterList" :key="item.title" :title="item.title" is-link :to="item.url">
             </van-cell>
+            <van-cell title="注销" @click="clearStorage"></van-cell>
         </div>
-        <FooterNav />
+        <FooterNav v-bind:active="active" />
     </div>
 </template>
 <script>
@@ -30,7 +25,6 @@ export default{
             { title: "修改手机号", url: "#" },
             { title: "修改密码", url: "#" },
             { title: "关于我们", url: "aboutUs" },
-            { title: "清除缓存", url: "#" }
             ],
         }
     },
@@ -43,6 +37,10 @@ export default{
         },
         toUserInformation(){
             this.$router.push({path:'/userinformation'})
+        },
+        clearStorage(){
+            localStorage.clear();
+            this.$toast("注销成功");
         }
     }
 }

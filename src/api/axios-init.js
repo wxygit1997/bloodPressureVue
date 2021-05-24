@@ -7,7 +7,8 @@ import router from '@/router'  //引入router
 // 添加请求拦截器，在请求头中加token
 
 const axiosInit = axios.create({
-    baseURL:'http://117.78.27.3:8080/gout2.0.hw4.stable/',
+    // baseURL:'http://117.78.27.3:8080/gout2.0.hw4.stable/',
+    baseURL:'https://www.goutmd.com/gout2.0.hw.yun',
     timeout:5000
 })
 axiosInit.interceptors.request.use(
@@ -29,7 +30,10 @@ axiosInit.interceptors.response.use(
     },
     //接口错误状态处理，也就是说无响应时的处理
     error => {
-        console.log(error.response.status)
+        // console.log(error.response.status)
+        console.log('error!')
+        const response = {'data': {'code': -1}}
+        return response
     }
 )
 

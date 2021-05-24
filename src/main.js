@@ -15,7 +15,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { Swipe, SwipeItem,Lazyload } from 'vant';
 import { Sidebar, SidebarItem,Cell, CellGroup,NavBar,Tabbar,TabbarItem,Form,Field,Button} from 'vant';
 import {Toast,Icon,RadioGroup, Radio,Popup} from 'vant'
-import {Picker,DatetimePicker, Tab, Tabs,SwipeCell,Search,Grid,GridItem,List, PullRefresh } from 'vant'
+import {Picker,DatetimePicker, Tab, Tabs,SwipeCell,Search,Grid,GridItem,List, PullRefresh,Empty } from 'vant'
 import _ from 'loadsh'
 
 Vue.prototype._=_
@@ -64,6 +64,7 @@ Vue.use(Grid);
 Vue.use(GridItem);
 Vue.use(List)
 Vue.use(PullRefresh)
+Vue.use(Empty)
 
 // import MintUi from 'mint-ui'
 // import 'mint-ui/lib/style.css'

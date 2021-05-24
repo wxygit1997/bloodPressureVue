@@ -1,5 +1,8 @@
 <template>
-    <div id="myCharts" ref="myCharts" style="width: 350px;height:350px;"></div>
+    <div v-if="isshow" id="myCharts" ref="myCharts" style="width: 350px;height:350px;"></div>
+    <div v-else>
+          <van-empty image="error" description="无内容" />
+    </div>
 </template>
 <script>
 const echarts = require('echarts');
@@ -8,6 +11,7 @@ export default{
         return{
             MobilePhone:window.localStorage.getItem("MobilePhone"),
             dataset:[],
+            isshow:true,
             nData:[],
             keys:[]
         }
@@ -86,6 +90,8 @@ export default{
             })
             .then(res=>{
                 console.log(res.data.data)
+                if(res.data.data.length==0)
+                    this.isshow=false;
                 _.forEachRight(res.data.data,(value, index) => {
                     console.log(value)
                     _this.nData.push({

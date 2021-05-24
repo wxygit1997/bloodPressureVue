@@ -55,7 +55,8 @@ export default {
             let _this=this;
             this.$http({
                 method:'post',
-                url:'http://117.78.27.3:8080/gout2.0.hw4.stable/gout/login',
+                // url:'http://117.78.27.3:8080/gout2.0.hw4.stable/gout/login',
+                url:'https://www.goutmd.com/gout2.0.hw.yun/gout/login',
                 data:{
                     comeFrom:"md",
                     userName:this.username,

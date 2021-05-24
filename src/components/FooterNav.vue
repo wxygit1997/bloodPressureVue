@@ -26,6 +26,9 @@ export default {
                 "/toolspage",
                 "/homeuser"
             ];
+            let token=localStorage.getItem('Authorization')
+            if(token)
+                routerArray[3]='/homeuserlogged'
             this.$router.push(routerArray[index])
         }
     }
