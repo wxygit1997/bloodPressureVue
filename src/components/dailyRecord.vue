@@ -28,7 +28,8 @@ export default {
     data(){
         return{
             DataList:'',
-            isshow:this.DataList.length==0?false:true,
+            // isshow:this.DataList.length==0?false:true,
+            isshow:true,
             date:'04-29',
             testTime:'09:22',
             highPressure:'12',
@@ -57,6 +58,7 @@ export default {
             .then(res=>{
                 // console.log(res.data.data)
                 var DataList=res.data.data
+                this.isshow = DataList.length==0?false:true
                 var newDataList = _.groupBy(DataList,function(obj){
                     if(obj.CheckTime)
                         return obj.CheckTime.substring(0,10)

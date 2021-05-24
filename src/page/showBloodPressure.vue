@@ -18,7 +18,7 @@
             :value="HeartRate" 
             label="次/分" />
             <van-cell center title="体重" 
-            value="内容" 
+            :value="Weight"
             label="kg" />
         </div>
         
@@ -55,6 +55,7 @@ export default{
             BloodPressure1:'',
             BloodPressure2:'',
             HeartRate:'',
+            Weight:'',
             DataList:[],
             islogged:localStorage.getItem('Authorization')?true:false
         }
@@ -106,16 +107,21 @@ export default{
                 this.DataList=DataList
                 console.log(this.DataList)
                 //最近历史记录
-                this.maxId=Math.max(...DataList.map(x=>x.ID))
+                this.maxId=Math.max(...DataList.map(x=>x.ID))                
                 console.log(this.maxId)
                 var maxId=this.maxId
-                var obj=DataList.find(function (x) {
+
+                let obj = DataList.find(function (x) {
                     return x.ID === maxId
                 })
+                // 很有可能没有 ID
+                // 因为 是从门诊系统来的数据，非输入的
+                if(!obj) obj = DataList[0]
                 console.log(obj.CheckTime.substring(0,10))
                 this.BloodPressure1=obj.BloodPressure1
                 this.BloodPressure2=obj.BloodPressure2
                 this.HeartRate=obj.HeartRate
+                this.Weight=obj.Weight
             })
             .catch(error=>{
                 console.log(error)
