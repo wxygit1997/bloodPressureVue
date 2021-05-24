@@ -16,6 +16,8 @@ import ToolsPage from '@/page/toolsPage'
 import ArticleDetail from '@/page/articleDetail'
 import RecordPage from '@/page/recordpage'
 import MyCollection from '@/page/myCollection'
+import DoctorLogged from '@/page/DoctorLogged'
+import UserInformationDoc from '@/page/userInformationDoc'
 
 
 Vue.use(Router)
@@ -96,6 +98,17 @@ const router = new Router({
       path: '/mycollection',
       name: 'MyCollection',
       component:MyCollection
+    },
+    {
+      path: '/doctorlogged',
+      name: 'DoctorLogged',
+      component:DoctorLogged
+    },
+    {
+      
+      path: '/userinformationdoc',
+      name: 'UserInformationDoc',
+      component:UserInformationDoc
     }
   ]
 })

@@ -100,13 +100,17 @@ export default {
                 console.log(res);
                 _this.MobilePhone=res.data.data.Tel;
                 window.localStorage.setItem('MobilePhone',_this.MobilePhone);
+                console.log(res.data.data.DoctorName)
+                window.localStorage.setItem('DoctorName',res.data.data.DoctorName);
+                window.localStorage.setItem('DoctorSex',res.data.data.Sex);
+                // window.localStorage.setItem('doctorName',res.data.data.);
                 // console.log('jwt '+res.data.data.Token);
                 _this.userToken = 'jwt '+res.data.data.jwt;
                 // 将用户token保存到vuex中
                 _this.$store.dispatch('cLogin',_this.userToken);
-                // _this.$router.push('/homeuser');
+                _this.$store.commit('addState',_this.isPat);
                 _this.$toast.success('登录成功');
-                this.$router.push({path:'/homeuserlogged'})
+                this.$router.push({path:'/doctorlogged'})
             })
             .catch(error=>{
                 alert('账号或密码错误');

@@ -3,12 +3,13 @@ import axios from 'axios'  //引入axios
 import store from '@/store/index'  //引入store
 import router from '@/router'  //引入router
 
-// axios.defaults.baseURL='http://117.78.27.3:8080/'
 // 添加请求拦截器，在请求头中加token
 
 const axiosInit = axios.create({
-    // baseURL:'http://117.78.27.3:8080/gout2.0.hw4.stable/',
-    baseURL:'https://www.goutmd.com/gout2.0.hw.yun',
+    //测试的
+    baseURL:'http://117.78.27.3:8080/gout2.0.hw4.stable/',
+    //正式的
+    // baseURL:'https://www.goutmd.com/gout2.0.hw.yun',
     timeout:5000
 })
 axiosInit.interceptors.request.use(
