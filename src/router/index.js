@@ -15,6 +15,7 @@ import DailyRecord from '@/components/dailyRecord'
 import ToolsPage from '@/page/toolsPage'
 import ArticleDetail from '@/page/articleDetail'
 import RecordPage from '@/page/recordpage'
+import MyCollection from '@/page/myCollection'
 
 
 Vue.use(Router)
@@ -90,6 +91,11 @@ const router = new Router({
       path: '/recordpage',
       name: 'RecordPage',
       component:RecordPage
+    },
+    {
+      path: '/mycollection',
+      name: 'MyCollection',
+      component:MyCollection
     }
   ]
 })

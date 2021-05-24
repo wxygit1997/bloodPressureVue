@@ -21,9 +21,9 @@ export default{
             unloggeduserCenterList : [
             { title: "已绑定患者", url: "#" },
             { title: "绑定新患者", url: "#" },
-            { title: "自诊历史", url: "#" },
             { title: "修改手机号", url: "#" },
             { title: "修改密码", url: "#" },
+            { title: "我的收藏", url: "mycollection" },
             { title: "关于我们", url: "aboutUs" },
             ],
         }
@@ -41,6 +41,7 @@ export default{
         clearStorage(){
             localStorage.clear();
             this.$toast("注销成功");
+            this.$router.push({path:'/homeuser'})
         }
     }
 }
