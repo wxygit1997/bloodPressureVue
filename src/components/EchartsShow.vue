@@ -32,7 +32,7 @@ export default{
                 },
                 legend: {
                     top:15,
-                    data:['收缩压','舒张压','心率']
+                    data:['收缩压','舒张压','心率','体重']
                 },
                 grid: {
                     left: '3%',
@@ -71,6 +71,7 @@ export default{
                 series:[
                     {type:'line'},
                     {type:'line'},
+                    {type:'line'},
                     {type:'line'}
                 ]
                     
@@ -99,6 +100,7 @@ export default{
                         '收缩压':value.BloodPressure1,
                         '舒张压':value.BloodPressure2,
                         '心率':value.HeartRate,                     
+                        '体重':value.Weight,
                     })
                 });
                 console.log(_this.nData)
