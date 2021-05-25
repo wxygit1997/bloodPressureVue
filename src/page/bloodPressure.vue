@@ -31,12 +31,6 @@
                 label="心率"
                 placeholder="请输入心率"
             />
-            <!-- <van-field
-                v-model="BloodPressureLevels"
-                name="血压水平"
-                label="血压水平"
-                placeholder="请输入血压水平"
-            /> -->
             <van-field
                 v-model="CheckTime"
                 name="测量时间"
@@ -88,7 +82,8 @@ export default{
     },
     methods:{
         onClickLeft(){
-            this.$router.push({path:'/toolspage'})
+            // this.$router.push({path:'/toolspage'})
+            this.$router.go(-1);
         },
         submitInfo(){
             this.$http({
@@ -107,6 +102,7 @@ export default{
             .then(res=>{
                 console.log(res.data.data.id)
                 console.log(res.data.data)
+                this.$toast.success("提交成功")
             })
             .catch(error=>{
                 alert('error');
@@ -128,6 +124,7 @@ export default{
             })
             .then(res=>{
                 console.log(res)
+                this.$toast.success("修改成功")
             })
             .catch(error=>{
                 console.log(error)
@@ -183,6 +180,7 @@ export default{
         }
         this.HighPressure=this.$route.query.highPressure;
         this.LowPressure=this.$route.query.lowPressure;
+        this.Weight=this.$route.query.weight;
     }
 }
 </script>

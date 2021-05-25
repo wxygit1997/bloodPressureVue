@@ -13,23 +13,31 @@
                     {{pressureLevel}}
                 </div>
             </div>
-            <template #right class="right">
+            <template #right class="right" v-if="isSwipe">
                 <van-button square text="删除" type="danger" class="delete-button" @click="deleteInfo" />
                 <van-button square text="修改" type="primary" class="delete-button" @click="changeInfo" />
             </template>
-            
+            <template #right v-else></template>
+
         </van-swipe-cell>
     </div>
 </template>
 <script>
 export default{
     inject:['reload'],
+    data(){
+        return{
+            isSwipe:this.ID==null?false:true
+        }
+        
+    },
     props:{
         testTime:String,
         highPressure:"",
         lowPressure:"",
         pressureLevel:"",
         ID:"",
+        weight:"",
     },
     methods:{
         deleteInfo(){
@@ -56,7 +64,8 @@ export default{
                 query:{
                     ID:this.ID,
                     highPressure:this.highPressure,
-                    lowPressure:this.lowPressure
+                    lowPressure:this.lowPressure,
+                    weight:this.weight,
                 }
             });
         }

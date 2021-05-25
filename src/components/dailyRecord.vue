@@ -13,6 +13,7 @@
                     :lowPressure="item_detail.BloodPressure2"
                     :pressureLevel="item_detail.BldLevel"
                     :ID="item_detail.ID"
+                    :weight="item_detail.Weight"
                     /> 
                 </div>
             </div>
@@ -29,7 +30,7 @@ export default {
         return{
             DataList:'',
             // isshow:this.DataList.length==0?false:true,
-            isshow:true,
+            isshow:false,
             date:'04-29',
             testTime:'09:22',
             highPressure:'12',
