@@ -86,7 +86,8 @@ export default {
             let _this=this;
             this.$http({
                 method:'post',
-                url:'http://117.78.27.3:8080/wxServer/jfc/login_md_ip',
+                // url:'http://117.78.27.3:8080/wxServer/jfc/login_md_ip',
+                url:'https://www.goutip.cn/jfc/login_md_ip',
                 data:{
                     comeFrom:"vu",
                     // wx_openid: user.openid,
