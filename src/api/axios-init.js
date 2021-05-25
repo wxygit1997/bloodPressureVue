@@ -7,9 +7,9 @@ import router from '@/router'  //引入router
 
 const axiosInit = axios.create({
     //测试的
-    baseURL:'http://117.78.27.3:8080/gout2.0.hw4.stable/',
+    // baseURL:'http://117.78.27.3:8080/gout2.0.hw4.stable/',
     //正式的
-    // baseURL:'https://www.goutmd.com/gout2.0.hw.yun',
+    baseURL:'https://www.goutmd.com/gout2.0.hw.yun',
     timeout:5000
 })
 axiosInit.interceptors.request.use(
