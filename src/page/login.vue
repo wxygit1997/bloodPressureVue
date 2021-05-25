@@ -126,7 +126,8 @@ export default {
                 // url:'http://117.78.27.3:8080/gout2.0.hw4.stable/gout/login',
                 //正式库
                 // url:'https://www.goutmd.com/gout2.0.hw.yun/gout/login',
-                url:'http://117.78.27.3:8080/wxServer/jfc/login_md_ip',
+                // url:'http://117.78.27.3:8080/wxServer/jfc/login_md_ip',
+                url:'https://www.goutip.cn/jfc/login_md_ip',
                 data:{
                     comeFrom:"vu",
                     // wx_openid: user.openid,
